@@ -1,5 +1,7 @@
 # Every time you add a new payment method, you have to modify the `PaymentProcessor` class to add another `elif` branch. This violates the Open/Closed Principle (OCP) because the class is not closed for modification—changes require editing existing code, which can introduce bugs.
 
+# ------------------------------------------------------------
+
 from abc import ABC, abstractmethod
 
 class PaymentMethod(ABC):
