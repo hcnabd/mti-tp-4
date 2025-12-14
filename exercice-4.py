@@ -2,31 +2,23 @@
 # Problem: Robots don’t eat or sleep, so `Robot` must implement meaningless methods. This **violates the Interface Segregation Principle (ISP)** because clients are forced to depend on methods they don’t use.
 
 # ------------------------------------------------------------
+class Human:
+    def work(self):
+        print("Human working")
 
-from abc import ABC, abstractmethod
+    def eat(self):
+        print("Human eating")
 
-class Workable(ABC):
-    @abstractmethod
-    def work(self): pass
+    def sleep(self):
+        print("Human sleeping")
 
-class Eatable(ABC):
-    @abstractmethod
-    def eat(self): pass
+    def get_salary(self):
+        print("Human gets salary")
 
-class Sleepable(ABC):
-    @abstractmethod
-    def sleep(self): pass
 
-class Payable(ABC):
-    @abstractmethod
-    def get_salary(self): pass
-    
-class Human(Workable, Eatable, Sleepable, Payable):
-    def work(self): print("Human working")
-    def eat(self): print("Human eating")
-    def sleep(self): print("Human sleeping")
-    def get_salary(self): print("Human gets salary")
+class Robot:
+    def work(self):
+        print("Robot working")
 
-class Robot(Workable, Payable):
-    def work(self): print("Robot working")
-    def get_salary(self): print("Robot gets salary")
+    def get_salary(self):
+        print("Robot gets salary")
