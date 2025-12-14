@@ -4,32 +4,25 @@
 # - Violates the **Dependency Inversion Principle**: high-level module depends on low-level concrete class.
 
 # ------------------------------------------------------------
-
-from abc import ABC, abstractmethod
-
-class NotificationService(ABC):
-    @abstractmethod
-    def send(self, message): pass
-
-class EmailService(NotificationService):
+class EmailService:
     def send(self, message):
         print(f"Sending email: {message}")
 
-class SMSService(NotificationService):
+class SMSService:
     def send(self, message):
         print(f"Sending SMS: {message}")
 
-class PushService(NotificationService):
+class PushService:
     def send(self, message):
         print(f"Sending push notification: {message}")
 
 class UserNotification:
-    def __init__(self, service: NotificationService):
-        self.service = service
+    def __init__(self, service):
+        self.service = service  
 
     def notify(self, user, message):
-        self.service.send(message)
-
+        self.service.send(message)  
+        
 email_notifier = UserNotification(EmailService())
 email_notifier.notify("Alice", "Welcome!")
 
